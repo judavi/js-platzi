@@ -28,6 +28,7 @@ function compile(watch) {
         bundle //closures --> dentro de una funcion referirse a variables por fuera
             .transform(babel)
             .bundle()
+            .on('error', function (error) { console.log(err); this.emit('end')})
             .pipe(source('index.js'))
             .pipe(rename('app.js'))
             .pipe(gulp.dest('public'));
