@@ -18,6 +18,36 @@ app.get('/signin', function(req, res){
   res.render('index');
 });
 
+app.get('/api/pictures', function(req,res){
+  var pictures = [
+    {
+      user: {
+        username: 'judavi',
+        avatar: 'https://s.gravatar.com/avatar/3bd169775e61041490d076bcd7ad86bf?s=80&r=g'
+      },
+      url: 'office.jpg',
+      likes: 10,
+      liked: true,
+      createdAt: new Date().getTime()
+    },
+    {
+      user: {
+        username: 'judavi',
+        avatar: 'https://s.gravatar.com/avatar/3bd169775e61041490d076bcd7ad86bf?s=80&r=g'
+      },
+      url: 'office.jpg',
+      likes: 2,
+      liked: false,
+      createdAt: new Date().setDate(new Date().getDate()-10)
+    }
+  ];
+
+  setTimeout(function (){
+      res.send(pictures);
+  }, 2000);
+
+});
+
 app.listen(3000, function(err){
   if(err){
     console.log('Hubo un error');
